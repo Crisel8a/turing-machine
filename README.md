@@ -1,5 +1,5 @@
 # Turing Machine
-##Turing Machine Simulator
+## Turing Machine Simulator
 A Turing machine is a computing device, just like your computer. You
 can think of it as a mechanism in which you write a word as input, and
 it processes it and outputs yes or no depending on whether or not
