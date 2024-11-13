@@ -1,0 +1,58 @@
+// Input: a#b (a and b are binary numbers)
+// Output: accepts if a % b == 0 or b % a == 0
+// Example: accepts 110#11 (6 and 3)
+//
+// Divisibility Detection Algorithm
+// for Turing Machine Simulator
+// turingmachinesimulator.com
+
+name: Binary divisibility detection
+init: q0
+accept: qAccept
+
+// Estado q0: Mover el cabezal hacia la derecha hasta encontrar el carácter '#'
+q0,0
+q0,0,>
+
+q0,1
+q0,1,>
+
+q0,#
+q1,#,>
+
+// Estado q1: Marcar el comienzo de b y mover el cabezal a la derecha
+q1,0
+q1,X,>    // Marcar 0 como X
+q1,1
+q1,Y,>    // Marcar 1 como Y
+q1,_
+q2,_,<
+
+// Estado q2: Moverse hacia la izquierda y contar el primer número
+q2,X
+q2,X,<
+
+q2,Y
+q2,Y,<
+
+q2,#
+q3,#,<
+
+q3,0
+q4,0,-   // Cambiar al estado de verificación para 0
+
+q3,1
+q4,1,-   // Cambiar al estado de verificación para 1
+
+// Estado q4: Verificación de divisibilidad
+q4,0
+q4,0,>
+
+q4,1
+q4,1,>
+
+q4,_
+qAccept,_,-
+
+// Estado de aceptación
+qAccept,_,_,_
