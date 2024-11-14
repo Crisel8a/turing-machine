@@ -1,11 +1,11 @@
-// Input: a#b (a y b son números ternarios)
-// Output: a + b en ternario
-// Ejemplo: 102#21 -> 200
+// Input: a#b (a and b are ternary numbers)
+// Output: a+b
+// Example: 102#21 outputs 120
 //
-// Algoritmo de Suma en Ternario
-// para el Simulador de Máquina de Turing
+// Ternary Addition Algorithm
+// for Turing Machine Simulator
 // turingmachinesimulator.com
-// Crisel Escalante
+// Crisel Escalante 
 
 name: Ternary addition
 init: q0
@@ -21,7 +21,7 @@ q0,2,_,_,>,-,-
 q0,#,_,_
 q1,_,_,_,>,-,-
 
-// Estado q1: Copiar los dígitos del segundo número ternario a la segunda cinta
+// Estado q1: Copiar los dígitos del segundo número trinario a la segunda cinta
 q1,0,_,_
 q1,_,0,_,>,>,- 
 q1,1,_,_
@@ -31,7 +31,7 @@ q1,_,2,_,>,>,-
 q1,_,_,_
 q2,_,_,_,<,<,-
 
-// Estado q2: Ajustar los dígitos en la segunda cinta, preparando la suma dígito a dígito
+// Estado q2: Ajustar los dígitos en la segunda cinta, preparando la suma bit a bit
 q2,_,0,_
 q2,_,0,_,<,-,- 
 q2,_,1,_
@@ -58,41 +58,43 @@ q2,0,1,_
 q3,0,1,_,-,-,- 
 
 // Estado q3: Realizar la suma y manejar los acarreos
-q3,0,0,_
-q3,_,_,0,<,<,<  // 0 + 0 = 0
-q3,1,0,_
-q3,_,_,1,<,<,<  // 1 + 0 = 1
 q3,2,0,_
-q3,_,_,2,<,<,<  // 2 + 0 = 2
-q3,0,1,_
-q3,_,_,1,<,<,<  // 0 + 1 = 1
+q3,2,0,2,<,<,<
 q3,1,1,_
-q3,_,_,2,<,<,<  // 1 + 1 = 2
+q3,1,1,2,<,<,<
 q3,2,1,_
-q4,_,_,0,<,<,<  // 2 + 1 = 10 (acarreo)
-q3,0,2,_
-q3,_,_,2,<,<,<  // 0 + 2 = 2
+q4,2,1,0,<,<,<
 q3,1,2,_
-q4,_,_,0,<,<,<  // 1 + 2 = 10 (acarreo)
+q4,1,2,0,<,<,<
+q3,0,2,_
+q3,0,2,2,<,<,<
+q3,1,0,_
+q3,1,0,1,<,<,<
 q3,2,2,_
-q4,_,_,1,<,<,<  // 2 + 2 = 11 (acarreo)
+q4,2,2,1,<,<,<
 q3,_,_,_
-q5,_,_,_,-,-,-  // Estado de aceptación
+q5,_,_,_,-,-,-
 
-// Estado q4: Manejar el acarreo
+// Estado q4: Manejar los acarreos
 q4,0,0,_
-q3,_,_,1,<,<,<  // Acarreo de 1
+q3,0,0,1,<,<,<
 q4,0,1,_
-q3,_,_,2,<,<,<  // Acarreo de 2
+q3,0,1,2,<,<,<
 q4,0,2,_
-q4,_,_,0,<,<,<  // 0 + 2 con acarreo (acarreo continuo)
+q4,0,2,0,<,<,<
 q4,1,0,_
-q3,_,_,2,<,<,<  // Acarreo + 1 + 0 = 2
+q4,1,0,0,<,<,<
 q4,1,1,_
-q4,_,_,0,<,<,<  // Acarreo de 1 + 1 = 0 (acarreo continuo)
+q4,1,1,0,<,<,<
 q4,1,2,_
-q4,_,_,1,<,<,<  // Acarreo de 1 + 2 = 1 (acarreo continuo)
+q4,1,2,1,<,<,<
 q4,2,0,_
-q4,_,_,1,<,<,<  // Acarreo de 1 + 2 + 0
+q4,2,0,1,<,<,<
 q4,2,1,_
-q4,_,_,0,<,<,<  // Acarreo de 1
+q4,2,1,0,<,<,<
+q4,_,1,_
+q3,_,1,0,<,<,<
+q4,_,0,_
+q4,_,0,2,<,<,<
+q4,_,_,_
+q5,_,_,1,-,-,- 
