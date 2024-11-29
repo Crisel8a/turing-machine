@@ -8,3 +8,5 @@ or is blank, and there is a read-write head pointing to exactly one cell
 at a time.
 ## Turing Machine Simulator
 https://turingmachinesimulator.com/
+
+![image](https://github.com/user-attachments/assets/7b39d9d9-547b-4139-95d3-61b8e23605d4)
